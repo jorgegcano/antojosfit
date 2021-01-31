@@ -1,0 +1,16 @@
+2021-01-15T21:27:40+00:00 CRITICAL Uncaught Error: Call to undefined function get_sidebar_instagram() in /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-content/themes/antojosFit/front-page.php:38
+Stack trace:
+#0 /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-blog-header.php(19): require_once('/Users/jorgegar...')
+#2 /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/index.php(17): require('/Users/jorgegar...')
+#3 {main}
+  thrown en /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-content/themes/antojosFit/front-page.php en la línea 38
+
+2021-01-15T21:28:31+00:00 CRITICAL Uncaught Error: Call to undefined function instagram() in /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-content/themes/antojosFit/front-page.php:38
+Stack trace:
+#0 /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-blog-header.php(19): require_once('/Users/jorgegar...')
+#2 /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/index.php(17): require('/Users/jorgegar...')
+#3 {main}
+  thrown en /Users/jorgegarciacano/Local Sites/antojosfitdev/app/public/wp-content/themes/antojosFit/front-page.php en la línea 38
+
