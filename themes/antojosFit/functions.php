@@ -294,7 +294,7 @@ function set_max_quantity_per_product() {
 
     }
 }
-/*comentario para ver si funciona*/
+
 
 
 
