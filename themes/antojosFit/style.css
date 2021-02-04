@@ -143,14 +143,6 @@ hr {
     padding: 5rem 0;
 }
 
-.contenedor-boton {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 10px 10px 10px;
-}
-
-
-
 /** Botón **/
 
 .boton {
@@ -172,6 +164,11 @@ hr {
 }
 
 @media (min-width: 991px) {
+    .contenedor-boton {
+        display: flex;
+        justify-content: center;
+        padding-top: 5rem;
+    }
     .boton {
         display: inline-block;
         flex: 0 0 auto;
@@ -996,31 +993,6 @@ div.wpcf7 .ajax-loader {
 
 li.producto.front-page {
     margin: 2rem 0;
-    border-bottom:  1px solid var(--grisClaro);
-}
-
-@media (min-width: 991px) {
-    .fila-par, .fila-impar{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .fila-par li, .fila-impar li {
-        border-bottom: none;
-        position: relative;
-    }
-    .fila-par li:nth-child(even) {
-        flex:0 0 calc(60% - 2rem);
-    }
-    .fila-par li:nth-child(odd) {
-        flex:0 0 calc(40% - 2rem);
-    }
-    .fila-impar li:nth-child(odd) {
-        flex:0 0 calc(60% - 2rem);
-    }
-    .fila-impar li:nth-child(even) {
-        flex:0 0 calc(40% - 2rem);
-    }
 }
 
 .producto.front-page img {
@@ -1028,6 +1000,39 @@ li.producto.front-page {
     height: 400px;
     object-fit: cover;
     margin: auto;
+}
+
+@media (min-width: 991px) {
+    li.producto.front-page {
+        margin: .5rem 0;
+        border-bottom:  none;
+    }
+    .fila-par, .fila-impar{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+    .fila-par li, .fila-impar li {
+        border-bottom: none;
+        position: relative;
+    }
+    .fila-par li:nth-child(even) {
+        flex:0 0 calc(55% - .5rem);
+    }
+    .fila-par li:nth-child(odd) {
+        flex:0 0 calc(45% - .5rem);
+    }
+    .fila-impar li:nth-child(odd) {
+        flex:0 0 calc(55% - .5rem);
+    }
+    .fila-impar li:nth-child(even) {
+        flex:0 0 calc(45% - .5rem);
+    }
+    .producto.front-page img {
+        width: -webkit-fill-available;
+        margin: 0;
+    }
 }
 
 .producto.front-page .contenido {
@@ -1058,20 +1063,23 @@ li.producto.front-page {
     text-align: center;
 }
 
+.product-title {
+    max-width: 700px;
+    position: relative;
+    margin: 0 auto;
+}
+
 @media (min-width: 991px) {
     .product a img:hover {
         opacity: 0.5;
         transition: opacity.5s ease-out;
          transition-delay: .1s;
      }
+     .product-title {
+        margin: 0;
+    }
 }
 
-
-.product-title {
-    max-width: 700px;
-    margin: 0 auto;
-    position: relative;
-}
 
 .product-title span {
     position:absolute;
