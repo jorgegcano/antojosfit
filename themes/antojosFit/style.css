@@ -1020,6 +1020,7 @@ li.producto.front-page {
     .fila-par li:nth-child(even) {
         flex:0 0 calc(55% - .5rem);
     }
+
     .fila-par li:nth-child(odd) {
         flex:0 0 calc(45% - .5rem);
     }
