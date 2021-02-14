@@ -21,9 +21,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 //$template = wc_get_theme_slug_for_templates();
 $page_slug = trim( $_SERVER["REQUEST_URI"] , '/' );
+?>
 
-if($page_slug == "shop") :
-echo '<div id="primary" class="content-area"><main id="main" class="site-main contenedor seccion" role="main">';
+<?php
+if($page_slug == "shop") : ?>
+<div id="primary" class="content-area"><main id="main" class="site-main contenedor seccion" role="main">
+<?php
 else :
-echo '<div id="primary" class="content-area"><main id="main" class="site-main" role="main">';
+?>
+<div id="primary" class="content-area"><main id="main" class="site-main" role="main">
+<?php
 endif;
+?>

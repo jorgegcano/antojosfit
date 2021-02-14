@@ -14,8 +14,6 @@
         <div class="contenedor contenedor-boton">
             <a class="boton boton-primario" href="<?php echo esc_url(get_permalink(get_page_by_title('shop'))); ?>">Ver Carta Completa</a>
         </div>
-
-
 </section>
 
 
@@ -25,7 +23,7 @@
     <?php
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => 4
+            'posts_per_page' => 3
         );
         $blog =new WP_Query($args);
         while($blog->have_posts()) : $blog->the_post();
@@ -33,6 +31,9 @@
         endwhile; wp_reset_postdata();
     ?>
     </ul>
+    <div class="contenedor contenedor-boton">
+            <a class="boton boton-primario" href="<?php echo esc_url(get_permalink(get_page_by_title('blog'))); ?>">Ver Otras Entradas</a>
+        </div>
 </section>
 
 <section class="blog contenedor seccion">

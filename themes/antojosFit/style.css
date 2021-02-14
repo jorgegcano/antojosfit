@@ -167,7 +167,6 @@ hr {
     .contenedor-boton {
         display: flex;
         justify-content: center;
-        padding-top: 5rem;
     }
     .boton {
         display: inline-block;
@@ -235,10 +234,15 @@ width: 70%;
 }
 
 @media(min-width: 991px) {
-    .lista-productos, .products, .listado-blog {
+    .lista-productos, .products {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+    }
+    .listado-blog {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .listado-blog .card .contenido {
         padding: 1rem 0;
@@ -272,7 +276,7 @@ width: 70%;
 
 @media (min-width: 991px) {
     .card {
-        flex: 0 0 calc(50% - 2rem);
+        flex: 0 0 calc(33.3% - 2rem);
         position: relative;
         border: none;
     }
@@ -294,28 +298,41 @@ width: 70%;
     padding: 3rem 0;
 }
 
+.card.card-blog {
+    position: relative;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card.card-blog .contenido {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding-left: 2rem;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    height: 7rem;
+    transition: 0.3s;
+}
+
+.card.card-blog .contenido p{
+    color: var(--blanco);
+    font-size: 2rem;
+}
+
+.card.card-blog .contenido .meta {
+    font-size: 1.4rem;
+}
 
 @media (min-width: 991px) {
-    .card.card-blog .contenido {
-        position: absolute;
-        bottom:0;
-        left: 0;
-        right: 0;
-        text-align: left;
-        padding-left: 2rem;
-        z-index: 2;
-        background-color: rgba(255,255,255,0.5);
-        height: 10rem;
-        display: flex;
-        align-items: center;
-        transition: 0.3s;
-    }
+
     .card.card-blog:hover .contenido{
         background-color: rgba(120, 212, 238, 0.8);
-        color: #fff;
-    }
-    .card.card-blog:hover .contenido p{
-        color: #fff;
     }
 }
 
@@ -358,10 +375,6 @@ width: 70%;
         font-style: italic;
         border-radius: 0.5rem;
     }
-}
-
-.card .contenido .meta {
-    font-size: 1.4rem;
 }
 
 .post-categories {
@@ -1030,6 +1043,9 @@ li.producto.front-page {
     .fila-impar li:nth-child(even) {
         flex:0 0 calc(45% - .5rem);
     }
+    .fila-par:last-of-type {
+    padding-bottom: 4rem;
+    }
     .producto.front-page img {
         width: -webkit-fill-available;
         margin: 0;
@@ -1080,7 +1096,6 @@ li.producto.front-page {
         margin: 0;
     }
 }
-
 
 .product-title span {
     position:absolute;

@@ -8,7 +8,7 @@
     <?php wp_head() ?>
     <title>anto.jos FIT (DEV)</title>
 </head>
-<body>
+<body <?php body_class();?> >
 
 <header class="site-header">
         <div class="contenedor">
@@ -19,7 +19,6 @@
                     <img src=<?php echo get_template_directory_uri()."/img/anto-jos-fit-TYPO_white.png" ?> width=200 alt="logo">
                 </a>
             </div>
-
                 <?php
                 $args = array(
                     'theme_location' => 'menu_principal',
@@ -41,10 +40,6 @@
                  ?>
             </div>
         </div>
-<!--
-    <div class="ad-banner">
-        <p>¡Realiza ya tu pedido online!</p>
-    </div>
--->
     </header>
+    <div class="header-background"></div>
     <div class="bg">
