@@ -40,4 +40,5 @@ function antojosfit_lista_productos($cantidad = -1) { ?>
 
             <?php  endwhile; wp_reset_postdata(); ?>
 <?php
+
 }

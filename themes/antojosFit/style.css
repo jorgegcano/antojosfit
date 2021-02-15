@@ -1057,6 +1057,7 @@ li.producto.front-page {
 }
 
 @media (min-width: 991px) {
+/*
     .producto.front-page .contenido {
         position: absolute;
         top: 0;
@@ -1074,6 +1075,7 @@ li.producto.front-page {
     .producto.front-page:hover .contenido {
         opacity: 1;
     }
+    */
 }
 
 .woocommerce-products-header {

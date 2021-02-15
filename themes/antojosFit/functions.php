@@ -124,7 +124,7 @@ function antojosfit_hero_image() {
     $shop_page_id = get_option('woocommerce_shop_page_id');
     $category_meriendas_page_id = get_cat_ID('Meriendas');
     $category_postres_page_id = get_cat_ID('Postres');
-    
+
     //Obtener id imagen
     $id_imagen = get_field('imagen_hero', $front_page_id);
     $id_imagen_blog = get_field('imagen_hero_blog', $blog_page_id);
