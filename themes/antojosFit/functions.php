@@ -157,6 +157,20 @@ function antojosfit_hero_image() {
 }
 
 add_action('init', 'antojosfit_hero_image');
+
+function ja_remove_body_classes( $wp_classes ) {
+
+    // The classes you wish to remove
+    $blacklist = array( 'woocommerce', 'woocommerce-page' );
+
+    // Remove classes from array
+    $wp_classes = array_diff( $wp_classes, $blacklist );
+
+    // Return modified body class array
+    return $wp_classes;
+
+}
+add_filter( 'body_class', 'ja_remove_body_classes', 10, 2 );
 /*
 function get_shop_featured_image() {
     if( is_shop() ) {
