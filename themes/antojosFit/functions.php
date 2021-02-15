@@ -122,6 +122,9 @@ function antojosfit_hero_image() {
     $front_page_id = get_option('page_on_front');
     $blog_page_id = get_option('page_for_posts');
     $shop_page_id = get_option('woocommerce_shop_page_id');
+    $category_meriendas_page_id = get_cat_ID('Meriendas');
+    $category_postres_page_id = get_cat_ID('Postres');
+    
     //Obtener id imagen
     $id_imagen = get_field('imagen_hero', $front_page_id);
     $id_imagen_blog = get_field('imagen_hero_blog', $blog_page_id);
@@ -157,6 +160,22 @@ function antojosfit_hero_image() {
 }
 
 add_action('init', 'antojosfit_hero_image');
+
+function ja_remove_body_classes( $wp_classes ) {
+
+    // The classes you wish to remove
+    $blacklist = array( 'woocommerce', 'woocommerce-page');
+
+    // Remove classes from array
+    $wp_classes = array_diff( $wp_classes, $blacklist );
+
+    // Return modified body class array
+    return $wp_classes;
+
+}
+
+add_filter( 'body_class', 'ja_remove_body_classes', 10, 2 );
+
 /*
 function get_shop_featured_image() {
     if( is_shop() ) {
@@ -168,7 +187,7 @@ function get_shop_featured_image() {
         echo "hola blog";
     }
   }
-  */
+*/
 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
