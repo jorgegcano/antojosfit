@@ -121,18 +121,13 @@ function antojosfit_hero_image() {
     //obtenerid página principal
     $front_page_id = get_option('page_on_front');
     $blog_page_id = get_option('page_for_posts');
-    $shop_page_id = get_option('woocommerce_shop_page_id');
-    $category_meriendas_page_id = get_cat_ID('Meriendas');
-    $category_postres_page_id = get_cat_ID('Postres');
 
     //Obtener id imagen
     $id_imagen = get_field('imagen_hero', $front_page_id);
     $id_imagen_blog = get_field('imagen_hero_blog', $blog_page_id);
-    $id_imagen_shop = get_field('imagen_hero_shop', $shop_page_id);
     //Obtener la imagen
     $imagen =wp_get_attachment_image_src($id_imagen, 'full')[0];
     $imagen_blog =wp_get_attachment_image_src($id_imagen_blog, 'full')[0];
-    $imagen_shop =wp_get_attachment_image_src($id_imagen_shop, 'full')[0];
 
     //Style CSS
     wp_register_style('custom', false);
@@ -147,16 +142,8 @@ function antojosfit_hero_image() {
         background-position: center;
         height: calc(100vh - 100px);
     }";
-    $imagen_destacada_shop_css = "body.archive .header-background {
-        background: url($imagen_shop);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: calc(100vh - 100px);
-    }";
     wp_add_inline_style('custom', $imagen_destacada_css);
     wp_add_inline_style('custom', $imagen_destacada_blog_css);
-    wp_add_inline_style('custom', $imagen_destacada_shop_css);
 }
 
 add_action('init', 'antojosfit_hero_image');
@@ -176,18 +163,21 @@ function ja_remove_body_classes( $wp_classes ) {
 
 add_filter( 'body_class', 'ja_remove_body_classes', 10, 2 );
 
-/*
-function get_shop_featured_image() {
+
+//$shop_page_id = get_option('woocommerce_shop_page_id');
+//$category_meriendas_page_id = get_cat_ID('Meriendas');
+//$category_postres_page_id = get_cat_ID('Postres');
+function get_featured_image() {
+
     if( is_shop() ) {
       $shop = get_option( 'woocommerce_shop_page_id' );
       if( has_post_thumbnail( $shop ) ) {
-        echo get_the_post_thumbnail( $shop );
+        //echo "style='background: url(http://localhost:10008/wp-content/uploads/2021/02/DSC03811-scaled.jpg)';background-repeat: no-repeat;background-size: cover;background-position: center;height: calc(100vh - 100px);";
+        //$img = get_the_post_thumbnail( $shop );
       }
-    } elseif (is_page("blog")) {
-        echo "hola blog";
     }
   }
-*/
+
 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );

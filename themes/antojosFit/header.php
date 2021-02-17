@@ -41,5 +41,5 @@
             </div>
         </div>
     </header>
-    <div class="header-background"></div>
+    <div class="header-background" ><?php //get_featured_image() ?></div>
     <div class="bg">
