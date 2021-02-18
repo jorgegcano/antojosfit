@@ -22,12 +22,14 @@ add_theme_support( 'woocommerce', array(
 add_theme_support('title-tag');
 
 //Agregar imágenes de tamaño personalizado (nombre, ancho, alto y recortado)
+
 add_image_size('square', 350, 350, true);
 add_image_size('portrait', 350, 724, true);
+/*
 add_image_size('cajas', 400, 375, true);
 add_image_size('mediano', 700, 400, true);
 add_image_size('blog', 966, 644, true);
-//add_image_size('shop_thumbnail', 700, 400, true);
+*/
 }
 add_action('after_setup_theme', 'antojosfit_setup');
 
@@ -141,6 +143,9 @@ function antojosfit_hero_image() {
         background-size: cover;
         background-position: center;
         height: calc(100vh - 100px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }";
     wp_add_inline_style('custom', $imagen_destacada_css);
     wp_add_inline_style('custom', $imagen_destacada_blog_css);
@@ -148,36 +153,56 @@ function antojosfit_hero_image() {
 
 add_action('init', 'antojosfit_hero_image');
 
-function ja_remove_body_classes( $wp_classes ) {
+function get_url_hero_image_shop() {
+    $shop_page_id = get_option('woocommerce_shop_page_id');
+    $thumbID = get_post_thumbnail_id( $shop_page_id );
+    $imgDestacada = wp_get_attachment_image_src( $thumbID, 'full' ); // Sustituir por thumbnail, medium, large o full
+    $pathImgDestacada = $imgDestacada[0];
+    echo "style='background: url($pathImgDestacada);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center'";
+}
 
+/**
+* Show the subcategory title in the product loop.
+*
+* @param object $category Category object.
+*/
+function woocommerce_template_loop_category_title( $category ) {
+    ?>
+        <h2 class="woocommerce-loop-category__title"> <?php echo esc_html( $category->name ); ?></h2>
+    <?php
+}
+
+add_action( 'woocommerce_archive_description', 'woocommerce_category_image', 2 );
+
+function woocommerce_category_image() {
+    if ( is_product_category() ){
+        global $wp_query;
+        $cat = $wp_query->get_queried_object();
+        $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+        $image = wp_get_attachment_url( $thumbnail_id );
+        if ( $image ) {
+            echo "<div style='display: flex; justify-content: center; align-items: center; height:calc(100vh - 100px);background:url($image);background-repeat: no-repeat;background-size: cover;background-position: center;'><h1 style='color:#ffffff;text-shadow: 0.1em 0.1em 0.2em black'>$cat->name</h1></div>";
+        }
+    }
+}
+
+function ja_remove_body_classes( $wp_classes ) {
     // The classes you wish to remove
     $blacklist = array( 'woocommerce', 'woocommerce-page');
-
     // Remove classes from array
     $wp_classes = array_diff( $wp_classes, $blacklist );
-
     // Return modified body class array
     return $wp_classes;
-
 }
 
 add_filter( 'body_class', 'ja_remove_body_classes', 10, 2 );
-
-
-//$shop_page_id = get_option('woocommerce_shop_page_id');
-//$category_meriendas_page_id = get_cat_ID('Meriendas');
-//$category_postres_page_id = get_cat_ID('Postres');
-function get_featured_image() {
-
-    if( is_shop() ) {
-      $shop = get_option( 'woocommerce_shop_page_id' );
-      if( has_post_thumbnail( $shop ) ) {
-        //echo "style='background: url(http://localhost:10008/wp-content/uploads/2021/02/DSC03811-scaled.jpg)';background-repeat: no-repeat;background-size: cover;background-position: center;height: calc(100vh - 100px);";
-        //$img = get_the_post_thumbnail( $shop );
-      }
-    }
-  }
-
 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
@@ -187,6 +212,7 @@ remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
 
+/*
 add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
     return array(
         'width' => 600,
@@ -194,6 +220,7 @@ add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
         'crop' => 0,
     );
 } );
+*/
 
 
 function wc_get_gallery_image_html_custom( $attachment_id, $main_image = false ) {

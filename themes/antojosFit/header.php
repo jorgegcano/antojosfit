@@ -41,5 +41,8 @@
             </div>
         </div>
     </header>
-    <div class="header-background" ><?php //get_featured_image() ?></div>
-    <div class="bg">
+    <?php if (is_shop()) {
+    echo "<div class='header-background'"; get_url_hero_image_shop(); echo "><h1 style='color:#ffffff;text-shadow: 0.1em 0.1em 0.2em black'>Carta</h1></div>";
+    } elseif (is_home()) {
+    echo "<div class='header-background'><h1 style='color:#ffffff;text-shadow: 0.1em 0.1em 0.2em black'>Blog</h1></div>";
+    }

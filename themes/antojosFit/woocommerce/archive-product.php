@@ -27,16 +27,8 @@ get_header( 'shop' );
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
 do_action( 'woocommerce_before_main_content' );
-if( is_shop() ) {
-$shop_page_id = get_option('woocommerce_shop_page_id');
-$thumbID = get_post_thumbnail_id( $shop_page_id );
-$imgDestacada = wp_get_attachment_image_src( $thumbID, 'full' ); // Sustituir por thumbnail, medium, large o full
-$pathImgDestacada = $imgDestacada[0];
-echo $pathImgDestacada;
-}
+
 ?>
-
-
 
 <header class="woocommerce-products-header">
 
@@ -50,6 +42,12 @@ echo $pathImgDestacada;
 	do_action( 'woocommerce_archive_description' );
 	?>
 </header>
+
+<?php
+if(is_shop()) { ?>
+	<h2 class="title-section-carta">Descubre Nuestra Carta</h2> <?php
+} ?>
+
 <?php
 if ( woocommerce_product_loop() ) {
 

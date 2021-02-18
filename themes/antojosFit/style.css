@@ -47,15 +47,6 @@ html {
   }
 
 
-  .bg {
-    background: url(img/bg4.png) ;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-
-
-
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -758,10 +749,6 @@ color: var(--blanco);
     display: block;
 }
 
-.site-footer .menu-principal {
-    display: block;
-}
-
 .site-footer .menu-principal li{
     display: flex;
     justify-content: center;
@@ -1056,6 +1043,18 @@ li.producto.front-page {
     padding: 3rem;
 }
 
+.product-title {
+    max-width: 700px;
+    position: relative;
+    margin: 0 auto;
+}
+
+@media (min-width: 991px) {
+    .product-title {
+       margin: 0;
+   }
+}
+
 @media (min-width: 991px) {
 /*
     .producto.front-page .contenido {
@@ -1078,26 +1077,36 @@ li.producto.front-page {
     */
 }
 
-.woocommerce-products-header {
-    text-align: center;
+.title-section-carta {
+    color:var(--colorTexto);
 }
 
-.product-title {
-    max-width: 700px;
-    position: relative;
-    margin: 0 auto;
+.product-category.product, ul .product.type-product {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
-@media (min-width: 991px) {
-    .product a img:hover {
-        opacity: 0.5;
-        transition: opacity.5s ease-out;
-         transition-delay: .1s;
-     }
-     .product-title {
-        margin: 0;
-    }
+.woocommerce-loop-category__title {
+    position: absolute;
+    top: 10px;
+    color:var(--blanco);
+    padding-left: 15px;
+    text-align: left;
 }
+
+.product a img:hover {
+    opacity: 0.5;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+    transition-delay: .1s;
+ }
+ .product a:hover .woocommerce-loop-category__title {
+    color: var(--colorTexto);
+    transition: .5s ease-out;
+    transition-delay: .1s;
+ }
 
 .product-title span {
     position:absolute;
@@ -1188,7 +1197,7 @@ position: relative;
     display: none;
 }
 
-.woocommerce-loop-product__title, .price{
+.price{
 	color:var(--colorTexto);
 }
 

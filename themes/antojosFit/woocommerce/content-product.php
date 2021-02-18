@@ -32,7 +32,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item' );
-	echo '<p class="product-title ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '"><span>' . get_the_title() . '</span></p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
 	 *
@@ -40,6 +40,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item_title' );
+	echo '<h2 class="woocommerce-loop-category__title ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	/**
 	 * Hook: woocommerce_shop_loop_item_title.
