@@ -202,7 +202,28 @@ function ja_remove_body_classes( $wp_classes ) {
     return $wp_classes;
 }
 
+//eliminar clases de la función bodyClass que se encuentra en el body
 add_filter( 'body_class', 'ja_remove_body_classes', 10, 2 );
+
+//Personalizar formulario comentarios del Blog
+add_filter( 'comment_form_default_fields', function( $fields ) {
+    $commenter = wp_get_current_commenter();
+    $req      = get_option( 'require_name_email' );
+    $html_req = ( $req ? " required='required'" : '' );
+
+    $fields['author'] = '<p><input placeholder="' . __( 'Nombre*' ) . '" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245" ' . $html_req . ' /></p>';
+    $fields['email'] = '<p><input placeholder="' . __( 'Email*' ) .'" id="email" name="email" ' . 'type="email"' . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes" ' . $html_req . ' /></p>';
+    unset($fields['url']);
+
+    return $fields;
+}, 10 );
+
+// Editar text area de los comentarios del Blog
+add_filter('comment_form_defaults', 'custom_comment_field', 10);
+function custom_comment_field ($defaults) {
+    $defaults['comment_field'] = '<p><textarea placeholder="' . _x( 'Comment', 'noun' ) . '" id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>';
+    return $defaults;
+}
 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );

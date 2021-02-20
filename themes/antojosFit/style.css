@@ -101,6 +101,10 @@ ul {
     padding: 0;
 }
 
+li {
+    list-style-type: none
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -316,15 +320,75 @@ width: 70%;
     font-size: 2rem;
 }
 
+.pagina .contenido-principal .commentlist p {
+text-align: left;
+margin: 0;
+}
+
+.comment-author.vcard cite a,
+.reply a,
+.comment-reply-title a,
+.comment-meta.commentmetadata a {
+    color:var(--colorTexto);
+}
+
+#cancel-comment-reply-link {
+    color:var(--colorTexto);
+    font-size: 1.5rem;
+}
+
+.reply a:hover {
+    color: var(--colorPrimarioRosa);
+}
+
+.comment-reply-title {
+    margin: 0;
+}
+
+.comment-notes {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.commentlist {
+    padding-inline-start: 0;
+}
+
+ul.children {
+    margin-left: 4rem;
+}
+
+.comment-form-cookies-consent {
+    font-size: 1.5rem;
+}
+
+
+
+.comment-form .form-submit .submit {
+    background-color: var(--colorPrimarioRosa);
+    color: var(--blanco);
+    border: none;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+}
+
+.comment-form .form-submit .submit:hover {
+    cursor: pointer
+}
+
 .card.card-blog .contenido .meta {
     font-size: 1.4rem;
 }
 
 @media (min-width: 991px) {
-
     .card.card-blog:hover .contenido{
         background-color: rgba(120, 212, 238, 0.8);
     }
+
 }
 
 .card .contenido p{
@@ -805,6 +869,10 @@ margin: 0 2rem;
     margin-bottom: 4rem;
 }
 
+.sidebar{
+    margin-top: 10rem;
+}
+
 @media (min-width: 991px) {
     .pagina.con-sidebar {
         display: flex;
@@ -815,6 +883,9 @@ margin: 0 2rem;
     }
     .con-sidebar .sidebar {
         flex:0 0 calc(35% - 2rem);
+    }
+    .sidebar {
+        margin-top: 0;
     }
 }
 
@@ -831,7 +902,10 @@ margin: 0 2rem;
     font-size: 1.8rem;
 }
 
-.wpcf7-form .wpcf7-form-control {
+.wpcf7-form .wpcf7-form-control,
+.comment-form textarea,
+.comment-form #author,
+.comment-form #email {
     width: 100%;
     padding: 1rem;
     height: 4rem;
@@ -840,7 +914,7 @@ margin: 0 2rem;
     border-radius: 0.5rem;
 }
 
-.wpcf7-form .wpcf7-textarea {
+.wpcf7-form .wpcf7-textarea, .comment-form textarea {
     height: 20rem;
 }
 
@@ -1228,7 +1302,8 @@ position: relative;
     align-items: center;
 }
 
-.summary .cart .choice input{
+.summary .cart .choice input,
+.wp-comment-cookies-consent {
     height: 1.8rem;
     width: 1.8rem!important;
     margin-bottom: 0.5rem;
