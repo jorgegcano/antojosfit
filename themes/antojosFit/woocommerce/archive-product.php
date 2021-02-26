@@ -27,7 +27,6 @@ get_header( 'shop' );
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
 do_action( 'woocommerce_before_main_content' );
-
 ?>
 
 <header class="woocommerce-products-header">
@@ -40,6 +39,14 @@ do_action( 'woocommerce_before_main_content' );
 	 * @hooked woocommerce_product_archive_description - 10
 	 */
 	do_action( 'woocommerce_archive_description' );
+
+    $args = array(
+        'theme_location' => 'menu_principal_3',
+        'container' => 'nav',
+        'container_class' => 'menu-principal-3'
+    );
+    wp_nav_menu($args);
+
 	?>
 </header>
 

@@ -22,10 +22,9 @@ add_theme_support( 'woocommerce', array(
 add_theme_support('title-tag');
 
 //Agregar imágenes de tamaño personalizado (nombre, ancho, alto y recortado)
-
+/*
 add_image_size('square', 350, 350, true);
 add_image_size('portrait', 350, 724, true);
-/*
 add_image_size('cajas', 400, 375, true);
 add_image_size('mediano', 700, 400, true);
 add_image_size('blog', 966, 644, true);
@@ -38,7 +37,8 @@ add_action('after_setup_theme', 'antojosfit_setup');
 function antojosfit_menus() {
     register_nav_menus( array(
         'menu_principal' => __('Menú Principal', 'antojosfit'),
-        'menu_principal_2' => __('Menú Principal 2', 'antojosfit')
+        'menu_principal_2' => __('Menú Principal 2', 'antojosfit'),
+        'menu_principal_3' => __('Menú Principal 3', 'antojosfit'),
     ));
 }
 
@@ -138,10 +138,10 @@ function antojosfit_hero_image() {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url($imagen);
     }";
     $imagen_destacada_blog_css = "body.blog .header-background {
-        background: url($imagen_blog);
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url($imagen_blog);
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position: bottom;
         height: calc(100vh - 100px);
         display: flex;
         justify-content: center;
@@ -188,7 +188,7 @@ function woocommerce_category_image() {
         $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
         $image = wp_get_attachment_url( $thumbnail_id );
         if ( $image ) {
-            echo "<div style='display: flex; justify-content: center; align-items: center; height:calc(100vh - 100px);background:url($image);background-repeat: no-repeat;background-size: cover;background-position: center;'><h1 style='color:#ffffff;text-shadow: 0.1em 0.1em 0.2em black'>$cat->name</h1></div>";
+            echo "<div style='display: flex; justify-content: center; align-items: center; height:calc(100vh - 100px);background:url($image);background-repeat: no-repeat;background-size: cover;background-position: bottom;'><h1 class='title-hero-size' style='color:#ffffff;text-shadow: 0.1em 0.1em 0.2em black'>$cat->name</h1></div>";
         }
     }
 }
@@ -243,7 +243,7 @@ add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
 } );
 */
 
-
+//Recupera todas las imágenes del producto para pintarlas como fondo del div
 function wc_get_gallery_image_html_custom( $attachment_id, $main_image = false ) {
 	$flexslider        = (bool) apply_filters( 'woocommerce_single_product_flexslider_enabled', get_theme_support( 'wc-product-gallery-slider' ) );
 	$gallery_thumbnail = wc_get_image_size( 'gallery_thumbnail' );
@@ -274,7 +274,7 @@ function wc_get_gallery_image_html_custom( $attachment_id, $main_image = false )
 		)
 	);
 
-	return $image;
+	return "<div style='background: url(".wp_get_attachment_url( $attachment_id ).");background-repeat: no-repeat;background-size: cover;background-position: center;height: calc(100vh - 100px);'></div>";
 }
 
 add_filter( 'woocommerce_quantity_input_args', 'jk_woocommerce_quantity_input_args', 10, 2 ); // Simple products
@@ -386,6 +386,7 @@ function set_max_quantity_per_product() {
 
     }
 }
+
 
 
 

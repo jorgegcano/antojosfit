@@ -30,6 +30,7 @@ if ( post_password_required() ) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
 }
+
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
@@ -41,6 +42,12 @@ if ( post_password_required() ) {
 	 * @hooked woocommerce_show_product_images - 20
 	 */
 	do_action( 'woocommerce_before_single_product_summary' );
+	$args = array(
+		'theme_location' => 'menu_principal_3',
+		'container' => 'nav',
+		'container_class' => 'menu-principal-3'
+	);
+	wp_nav_menu($args);
 	?>
 
 	<div class="summary entry-summary">
