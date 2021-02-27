@@ -3,7 +3,7 @@ Contributors: smashballoon, craig-at-smash-balloon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram widget, Instagram gallery
 Requires at least: 3.4
 Tested up to: 5.6
-Stable tag: 2.8
+Stable tag: 2.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -332,6 +332,11 @@ We understand that sometimes you need help, have issues or just have questions. 
 * Plus more customization options added all the time!
 
 == Changelog ==
+= 2.8.1 =
+* Fix: Fixed a PHP warning which would display in some situations: "array_diff(): Expected parameter 1 to be an array, string given".
+* Fix: Fixed PHP warning "Undefined index: accesstoken" which would display when no primary account was selected.
+* Fix: Fixed issue where account errors were not being removed after an account was deleted or reconnected.
+
 = 2.8 =
 * New: The locations of the Instagram feeds on your site will now be logged and listed on a single page for easier management. After this feature has been active for awhile, a "Feed Finder" link will appear next to the Feed Type setting on the plugin Settings page which allows you to see a list of all feeds on your site along with their locations.
 * New: Local resized images will now include a 150x150 resolution version for each post.

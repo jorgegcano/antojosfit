@@ -278,7 +278,7 @@ function sbi_do_account_delete( $account_id ) {
 	$options = get_option( 'sb_instagram_settings', array() );
 	$connected_accounts =  isset( $options['connected_accounts'] ) ? $options['connected_accounts'] : array();
 	global $sb_instagram_posts_manager;
-	$sb_instagram_posts_manager->remove_connected_account_error( $connected_accounts[ $account_id ] );
+	$sb_instagram_posts_manager->reset_api_errors();
 	wp_cache_delete ( 'alloptions', 'options' );
 	$username = $connected_accounts[ $account_id ]['username'];
 	$sb_instagram_posts_manager->add_action_log( 'Deleting account ' . $username );

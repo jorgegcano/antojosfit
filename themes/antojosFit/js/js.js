@@ -5,6 +5,11 @@ jQuery(document).ready($ => {
         appendTo: '.barra-navegacion',
     });
 
+    $('nav.menu-principal-3').prepend("<div><span>Ir a otra Categoría<i class='fas fa-chevron-circle-down'></i></span></div>");
+    $("nav.menu-principal-3 div span").click(function () {
+        $("#menu-menu-3").slideToggle();
+    });
+
     $(".sbi_follow_btn.sbi_custom a svg").remove();
     $("#gallery-2").remove();
 
@@ -35,7 +40,6 @@ if (window.location.pathname == '/') {
             const headerNav = document.querySelector('.barra-navegacion');
             const logo = document.querySelector('.logo');
             const logoMinimizado = document.querySelector('.logo-minimizado');
-            const documentBody = document.querySelector('body');
             if (scroll > 195) {
                 headerNav.classList.add('fixed-top');
                 headerNav.classList.add('ft-activo');
@@ -46,6 +50,48 @@ if (window.location.pathname == '/') {
                 headerNav.classList.remove('ft-activo');
                 logo.style.display = 'flex'
                 logoMinimizado.style.display = 'none'
+            }
+        }
+    } else {
+        console.log("inicio a menos de 991px")
+    }
+} else {
+    console.log("BLOG")
+    if (window.matchMedia("(min-width: 991px)").matches) {
+        console.log("inicio a 991px o más")
+        const sidebar = document.querySelector('.post-template-default .sidebar');
+        const siteFooter = document.querySelector('.post-template-default .site-footer');
+        const footerHeight = siteFooter.offsetHeight;
+        const contenedor = document.querySelector(".contenedor.pagina.seccion.con-sidebar").offsetWidth
+        const contenidoPrincipal = document.querySelector(".contenido-principal").offsetWidth
+        const alturamain = document.querySelector("main").offsetHeight
+        const alturaSinFooter = alturamain - footerHeight
+        console.log("altura main: " + alturamain)
+        console.log("altura footer: " + footerHeight)
+        console.log("altura sin footer: " +alturaSinFooter)
+        const sidebarWidth = contenedor - contenidoPrincipal - 40;
+        sidebar.style.width = sidebarWidth + "px";
+        window.onscroll = () => {
+            const scroll = window.scrollY;
+            console.log(scroll)
+            if (scroll > 144) {
+                sidebar.classList.add('fixed-sidebar');
+                if (scroll < 1651) {
+                    sidebar.classList.add('fixed-sidebar');
+                    sidebar.style.top = 0;
+                    sidebar.style.bottom = "unset";
+                } else {
+                    console.log("entro")
+                    sidebar.style.top = "unset";
+                    sidebar.style.bottom = "0";
+                    sidebar.classList.remove('fixed-sidebar');
+                    sidebar.style.display = "grid";
+                    sidebar.style.alignSelf = "flex-end";
+                }
+            } else {
+                sidebar.classList.remove('fixed-sidebar');
+                sidebar.style.display = "block";
+                sidebar.style.alignSelf = "unset";
             }
         }
     } else {

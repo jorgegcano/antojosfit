@@ -45,6 +45,7 @@ do_action( 'woocommerce_before_main_content' );
         'container' => 'nav',
         'container_class' => 'menu-principal-3'
     );
+
     wp_nav_menu($args);
 
 	?>

@@ -103,7 +103,7 @@ class WP_Widget_Recent_Posts_Custom extends WP_Widget {
 		}
 		?>
 
-		<ul>
+		<ul class="recent-post-widget">
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title   = get_the_title( $recent_post->ID );
@@ -115,7 +115,7 @@ class WP_Widget_Recent_Posts_Custom extends WP_Widget {
 				}
 				?>
 				<li>
-					<a href="<?php the_permalink( $recent_post->ID ); ?>"<?php echo $aria_current; ?>><span><?php echo $title; ?></span><?php echo get_the_post_thumbnail($recent_post->ID,array(100,100));   ?></a>
+					<a href="<?php the_permalink( $recent_post->ID ); ?>"<?php echo $aria_current; ?>><div><?php echo get_the_post_thumbnail($recent_post->ID, array(100,100));   ?><span><?php echo $title; ?></span></div></a>
 					<?php if ( $show_date ) : ?>
 						<span class="post-date"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
 					<?php endif; ?>
@@ -178,9 +178,6 @@ class WP_Widget_Recent_Posts_Custom extends WP_Widget {
 		<?php
 	}
 }
-
-
-
 
 // register Foo_Widget widget
 function antojosfit_register_widget() {

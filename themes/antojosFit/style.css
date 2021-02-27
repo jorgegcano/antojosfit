@@ -366,15 +366,13 @@ margin: 0;
     padding-inline-start: 0;
 }
 
-ul.children {
+.commentlist ul.children {
     margin-left: 4rem;
 }
 
 .comment-form-cookies-consent {
     font-size: 1.5rem;
 }
-
-
 
 .comment-form .form-submit .submit {
     background-color: var(--colorPrimarioRosa);
@@ -442,6 +440,28 @@ ul.children {
         font-style: italic;
         border-radius: 0.5rem;
     }
+}
+
+.recent-post-widget {
+   margin: 2rem auto;
+   width: fit-content;
+}
+
+.recent-post-widget li {
+    display: flex;
+    justify-content: flex-start;
+    margin: 2rem auto;
+    background-color: rgb(244,244,244);
+    padding: 1rem;
+}
+
+.recent-post-widget li div{
+    display: flex;
+   text-align: left;
+}
+
+.recent-post-widget li span{
+    padding-left: 1rem;
 }
 
 .post-categories {
@@ -638,6 +658,37 @@ font-size: 2.5rem;
 color: var(--blanco);
 }
 
+#menu-menu-3 {
+    display: none;
+}
+
+.menu-principal-3 {
+    background-color: var(--colorPrimarioMarron);
+    text-align: center;
+}
+
+.menu-principal-3 ul li {
+    padding: 0.8rem 0;
+}
+
+.menu-principal-3 ul li a{
+    color: var(--blanco);
+    font-size: 2rem;
+    padding: 0.8rem 0;
+}
+
+.menu-principal-3 div span {
+    font-weight:300;
+    color:#fff;
+    font-size:2rem;
+}
+
+.menu-principal-3 div span i {
+    color:#fff;
+    font-size:2rem;
+    padding-left:3rem;
+}
+
 @media (min-width: 991px){
     .menu-principal {
         display: flex;
@@ -670,8 +721,11 @@ color: var(--blanco);
         display: flex;
         justify-content: space-between;
     }
-    .menu-principal-3 {
-        background-color: var(--colorPrimarioMarron)
+    #menu-menu-3 {
+        display: flex;
+    }
+    .menu-principal-3 div {
+        display: none;
     }
     .menu-principal-3 ul{
         display: flex;
@@ -680,10 +734,7 @@ color: var(--blanco);
     .menu-principal-3 ul li{
         padding: 1.5rem;
     }
-    .menu-principal-3 ul li a{
-        color: var(--blanco);
-        font-size: 2rem;
-    }
+
 }
 
 /**Reescribir estilos menú móvil**/
@@ -778,6 +829,11 @@ color: var(--blanco);
     .fixed-top .logo a {
         width: 8rem;
         height: 8rem;
+    }
+    .fixed-sidebar {
+        position: fixed;
+        transition: all 1s ease;
+        right: 0;
     }
 }
 
@@ -912,6 +968,10 @@ margin: 0 2rem;
     }
     .sidebar {
         margin-top: 0;
+    }
+
+    .post-template-default .sidebar {
+
     }
 }
 

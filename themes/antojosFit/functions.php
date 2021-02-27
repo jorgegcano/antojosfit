@@ -39,6 +39,7 @@ function antojosfit_menus() {
         'menu_principal' => __('Menú Principal', 'antojosfit'),
         'menu_principal_2' => __('Menú Principal 2', 'antojosfit'),
         'menu_principal_3' => __('Menú Principal 3', 'antojosfit'),
+        'menu_principal_4' => __('Menú Principal 4', 'antojosfit'),
     ));
 }
 
