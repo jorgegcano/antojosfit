@@ -19,7 +19,7 @@ jQuery(document).ready($ => {
         $('.woocommerce-product-gallery').bxSlider({
             auto: true,
             mode: 'fade',
-            pause: 6000,
+            pause: 3000,
             autoControls: false,
             controls: false,
         });
@@ -27,6 +27,22 @@ jQuery(document).ready($ => {
 	/**/
 
     $('.single_add_to_cart_button').prepend('<i class="fas fa-shopping-cart">')
+
+    //Validar aceptación de política de privacidad
+    $('.form-submit').click(function (event) {
+        if (!$('#agdpr-consentimiento').is(":checked")) {
+            alert("Debes aceptar la política de privacidad")
+            event.preventDefault();
+        }
+    });
+
+    $('.wpcf7-form-control.wpcf7-submit').click(function (event) {
+        alert("Debes aceptar la política de privacidad")
+        if (!$('.wpcf7-form-control.wpcf7-acceptance input').is(":checked")) {
+            alert("Debes aceptar la política de privacidad")
+            event.preventDefault();
+        }
+    });
 
 });
 
@@ -52,36 +68,29 @@ if (window.location.pathname == '/') {
                 logoMinimizado.style.display = 'none'
             }
         }
-    } else {
-        console.log("inicio a menos de 991px")
     }
+
 } else {
-    console.log("BLOG")
     if (window.matchMedia("(min-width: 991px)").matches) {
-        console.log("inicio a 991px o más")
         const sidebar = document.querySelector('.post-template-default .sidebar');
-        const siteFooter = document.querySelector('.post-template-default .site-footer');
-        const footerHeight = siteFooter.offsetHeight;
+        const footerHeight = document.querySelector('.post-template-default .site-footer').offsetHeight;
         const contenedor = document.querySelector(".contenedor.pagina.seccion.con-sidebar").offsetWidth
         const contenidoPrincipal = document.querySelector(".contenido-principal").offsetWidth
-        const alturamain = document.querySelector("main").offsetHeight
-        const alturaSinFooter = alturamain - footerHeight
-        console.log("altura main: " + alturamain)
-        console.log("altura footer: " + footerHeight)
-        console.log("altura sin footer: " +alturaSinFooter)
+        const alturaSinFooter = document.querySelector("main").offsetHeight - footerHeight - 350
+        //console.log("altura main: " + alturamain)
+        //console.log("altura footer: " + footerHeight)
+        //console.log("altura sin footer: " + alturaSinFooter)
         const sidebarWidth = contenedor - contenidoPrincipal - 40;
         sidebar.style.width = sidebarWidth + "px";
         window.onscroll = () => {
             const scroll = window.scrollY;
-            console.log(scroll)
             if (scroll > 144) {
                 sidebar.classList.add('fixed-sidebar');
-                if (scroll < 1651) {
+                if (scroll < alturaSinFooter) {
                     sidebar.classList.add('fixed-sidebar');
                     sidebar.style.top = 0;
                     sidebar.style.bottom = "unset";
                 } else {
-                    console.log("entro")
                     sidebar.style.top = "unset";
                     sidebar.style.bottom = "0";
                     sidebar.classList.remove('fixed-sidebar');
@@ -94,8 +103,6 @@ if (window.location.pathname == '/') {
                 sidebar.style.alignSelf = "unset";
             }
         }
-    } else {
-        console.log("inicio a menos de 991px")
     }
 }
 

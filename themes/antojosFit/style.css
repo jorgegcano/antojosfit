@@ -832,8 +832,7 @@ color: var(--blanco);
     }
     .fixed-sidebar {
         position: fixed;
-        transition: all 1s ease;
-        right: 0;
+        right: 3.5%;
     }
 }
 
@@ -1534,6 +1533,33 @@ position: relative;
     display: none;
 }
 
+/*RGPD*/
+#menu-textos-legales-adapta-rgpd {
+    background-color: var(--colorPrimarioMarron);
+    padding: 0;
+}
+#menu-textos-legales-adapta-rgpd li a{
+    color: var(--blanco);
+}
+#cookies-eu-banner-closed {
+    padding: 3px;
+    font-size: 1.6rem;
+    min-height: unset;
+}
+.argpd-informar {
+    display: none;
+}
+.wpcf7-form-control.wpcf7-acceptance {
+    background-color: var(--blanco);
+    border: none;
+    padding-left: 0;
+}
+.wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item {
+margin: 0;
+}
+.wpcf7-form p:nth-child(6) {
+    display: flex;
+}
 
 
 
