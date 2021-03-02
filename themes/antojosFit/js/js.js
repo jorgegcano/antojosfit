@@ -44,6 +44,12 @@ jQuery(document).ready($ => {
         }
     });
 
+    //Añade la clase current-page-item en todo momento a los items del menú
+    $('.archive.category .current_page_parent').addClass('current_page_item')
+    $('.post-template-default.single .current_page_parent').addClass('current_page_item')
+    $('.archive.tax-product_cat #menu-item-205').addClass('current_page_item')
+    $('.product-template-default.single #menu-item-205').addClass('current_page_item')
+
 });
 
 //Hay que agregar función para que escuche al ensanchar o estrechar la pantalla

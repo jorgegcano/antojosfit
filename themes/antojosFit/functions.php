@@ -280,6 +280,19 @@ function wc_get_gallery_image_html_custom( $attachment_id, $main_image = false )
 
 add_filter( 'woocommerce_quantity_input_args', 'jk_woocommerce_quantity_input_args', 10, 2 ); // Simple products
 
+// Cambiar el texto "Productos relacionados" en WooCommerce
+
+add_filter('gettext', 'change_rp_text', 10, 3);
+add_filter('ngettext', 'change_rp_text', 10, 3);
+
+function change_rp_text($translated, $text, $domain)
+{
+     if ($text === 'Related products' && $domain === 'woocommerce') {
+         $translated = esc_html__('También podría gustarte:', $domain);
+     }
+     return $translated;
+}
+
 function jk_woocommerce_quantity_input_args( $args, $product ) {
 
     if ( is_singular( 'product' ) ) {

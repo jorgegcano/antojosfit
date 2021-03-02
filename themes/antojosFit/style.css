@@ -224,6 +224,15 @@ flex: 0 1 800px;
     margin-top: 4rem;
 }
 
+.related.products .products {
+margin-top: 0 ;
+padding-top: 0;
+}
+
+.related.products h2 {
+    text-align: center;
+}
+
 .contenedor.seccion {
     text-align: center;
 }
@@ -1535,8 +1544,8 @@ position: relative;
 
 /*RGPD*/
 #menu-textos-legales-adapta-rgpd {
-    background-color: var(--colorPrimarioMarron);
-    padding: 0;
+    /*background-color: var(--colorPrimarioMarron);*/
+    /*padding: 0;*/
 }
 #menu-textos-legales-adapta-rgpd li a{
     color: var(--blanco);
