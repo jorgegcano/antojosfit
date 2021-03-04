@@ -169,6 +169,34 @@ function get_url_hero_image_shop() {
     align-items: center'";
 }
 
+//Imagen hero Alérgenos
+function get_url_hero_image_alergenos() {
+
+    $alergenos_page = get_page_by_title('Alérgenos');
+    $alergenos_page_id =$alergenos_page->ID;
+    $thumbID = get_post_thumbnail_id( $alergenos_page_id );
+    $imgDestacada = wp_get_attachment_image_src( $thumbID, 'full' ); // Sustituir por thumbnail, medium, large o full
+    $pathImgDestacada = $imgDestacada[0];
+    echo "style='background: url($pathImgDestacada);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center'";
+}
+
+//Recuperar los alérgenos
+function get_alergenos() {
+    $alergenos = get_field( 'lista_alergenos' );
+    echo "<ul class='listado-blog'>";
+    foreach ($alergenos as $alergeno => $value) {
+        echo "<li class='alergenos'>".$value."<img src='".get_template_directory_uri()."/img/alergenos/huevo copia.png' alt='alergeno'/></li>";
+    }
+    echo "</ul>";
+}
+
 /**
 * Show the subcategory title in the product loop.
 *
@@ -400,7 +428,6 @@ function set_max_quantity_per_product() {
 
     }
 }
-
 
 
 

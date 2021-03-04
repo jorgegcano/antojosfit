@@ -72,7 +72,10 @@ if ( post_password_required() ) {
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 		do_action( 'woocommerce_after_single_product_summary' );
 
+		get_alergenos();
+
 		do_action( 'woocommerce_single_product_summary' );
+
 		?>
 	</div>
 

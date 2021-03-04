@@ -555,6 +555,19 @@ margin: 0;
     font-size: 1.6rem;
 }
 
+/*Alérgenos*/
+.alergenos img {
+    border-radius: 100%;
+}
+
+@media (min-width: 991px) {
+    .alergenos {
+        flex: 0 0 calc(33.3% - 2rem);
+        position: relative;
+        border: none;
+    }
+}
+
 /** Sidebar **/
 .widget {
     padding: 2rem 0;
