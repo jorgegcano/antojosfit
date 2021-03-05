@@ -192,7 +192,7 @@ function get_alergenos() {
     $alergenos = get_field( 'lista_alergenos' );
     echo "<ul class='listado-blog'>";
     foreach ($alergenos as $alergeno => $value) {
-        echo "<li class='alergenos'>".$value."<img src='".get_template_directory_uri()."/img/alergenos/huevo copia.png' alt='alergeno'/></li>";
+        echo "<li class='alergenos'><img src='".get_template_directory_uri()."/img/alergenos/".$value.".png' alt='alergeno'/><span>".$value."</span></li>";
     }
     echo "</ul>";
 }

@@ -9,7 +9,7 @@
 <div class="contenido-footer">
 <?php
     $args = array(
-        'theme_location' => 'menu_principal',
+        'theme_location' => 'menu_principal_4',
         'container' => 'nav',
         'container_class' => 'menu-principal'
     );

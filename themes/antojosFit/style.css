@@ -558,13 +558,21 @@ margin: 0;
 /*Alérgenos*/
 .alergenos img {
     border-radius: 100%;
+    margin-right: 1rem;
+}
+
+.alergenos {
+width: 100%;
+margin: 0 auto;
 }
 
 @media (min-width: 991px) {
     .alergenos {
         flex: 0 0 calc(33.3% - 2rem);
-        position: relative;
-        border: none;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem 0;
     }
 }
 
